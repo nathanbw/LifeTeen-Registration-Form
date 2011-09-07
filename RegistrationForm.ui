@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>LifeTeen 2011 Registration</string>
+   <string>LifeTeen Registration</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>

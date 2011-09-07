@@ -1,5 +1,5 @@
-#ifndef CALCULATORFORM_H
-#define CALCULATORFORM_H
+#ifndef _RegistrationForm_h_
+#define _RegistrationForm_h_
 
 #include "ui_RegistrationForm.h"
 

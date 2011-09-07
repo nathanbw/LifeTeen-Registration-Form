@@ -62,6 +62,8 @@ RegistrationForm::on_submitRegPushButton_clicked()
         // (ui.teenCellLineEdit->text() == "") || // Teen cell not required.
         (ui.birthdayDateEdit->date() == ui.birthdayDateEdit->minimumDate()))
     {
+        // Might highlight required fields like this:
+        // ui.firstNameLabel->setForegroundRole(QPalette::Highlight);
         qDebug() << "Some field is missing!";
         qDebug() << ui.firstNameLineEdit->text()
                  << "," << ui.lastNameLineEdit->text()
@@ -72,10 +74,18 @@ RegistrationForm::on_submitRegPushButton_clicked()
                  << "," << ui.homePhoneLineEdit->text()
                  << "," << ui.teenCellLineEdit->text()
                  << "," << ui.birthdayDateEdit->date().toString("MM/dd");
+        QMessageBox msgBox;
+        QFont msgBoxFont;
+        msgBoxFont.setPointSize(14);
+        msgBoxFont.setBold(true);
+        msgBox.setWindowTitle("Notice");
+        msgBox.setFont(msgBoxFont);
+        msgBox.setText("Please enter all required fields");
+        msgBox.exec();
         return;
     }
     // All fields have been validated.
-    // 1. Create line to be appended file
+    // Create line to be appended file
     QString curLine; // Note: performance here is terrible:
     curLine += ui.firstNameLineEdit->text()
         + "," + ui.lastNameLineEdit->text()
@@ -86,12 +96,19 @@ RegistrationForm::on_submitRegPushButton_clicked()
         + "," + ui.homePhoneLineEdit->text()
         + "," + ui.teenCellLineEdit->text()
         + "," + ui.birthdayDateEdit->date().toString("MM/dd/yyyy");
-    // 2. Append line to file
+    // Append line to file
     AppendLineToFile(&curLine); // TODO: Check return here, give error if failed!
-    // 4. Clear form
+    // Clear form
     ClearForm();
-    // 5. Display "You're done!" box.
-    // TODO: How to do "You're done!"?
+    // Display "You're done!" box.
+    QMessageBox msgBox;
+    QFont msgBoxFont;
+    msgBoxFont.setPointSize(14);
+    msgBoxFont.setBold(true);
+    msgBox.setWindowTitle("Contragulations!");
+    msgBox.setFont(msgBoxFont);
+    msgBox.setText("You have successfully registered!");
+    msgBox.exec();
 }
 
 bool
