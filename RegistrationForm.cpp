@@ -50,30 +50,8 @@ RegistrationForm::RegistrationForm(QWidget *parent, QString fileName)
 void
 RegistrationForm::on_submitRegPushButton_clicked()
 {
-    // TODO: Check each item individually, tell the user
-    //       which item is missing.
-    if ((ui.firstNameLineEdit->text() == "") ||
-        (ui.lastNameLineEdit->text() == "") ||
-        (ui.gradeComboBox->currentText() == "Choose Below:") ||
-        (ui.schoolLineEdit->text() == "") ||
-        (ui.teenEmailLineEdit->text() == "") ||
-        (ui.parentEmailLineEdit->text() == "") ||
-        (ui.homePhoneLineEdit->text() == "") ||
-        // (ui.teenCellLineEdit->text() == "") || // Teen cell not required.
-        (ui.birthdayDateEdit->date() == ui.birthdayDateEdit->minimumDate()))
+    if (!ValidateForm())
     {
-        // Might highlight required fields like this:
-        // ui.firstNameLabel->setForegroundRole(QPalette::Highlight);
-        qDebug() << "Some field is missing!";
-        qDebug() << ui.firstNameLineEdit->text()
-                 << "," << ui.lastNameLineEdit->text()
-                 << "," << ui.gradeComboBox->currentText()
-                 << "," << ui.schoolLineEdit->text()
-                 << "," << ui.teenEmailLineEdit->text()
-                 << "," << ui.parentEmailLineEdit->text()
-                 << "," << ui.homePhoneLineEdit->text()
-                 << "," << ui.teenCellLineEdit->text()
-                 << "," << ui.birthdayDateEdit->date().toString("MM/dd");
         QMessageBox msgBox;
         QFont msgBoxFont;
         msgBoxFont.setPointSize(14);
@@ -97,7 +75,18 @@ RegistrationForm::on_submitRegPushButton_clicked()
         + "," + ui.teenCellLineEdit->text()
         + "," + ui.birthdayDateEdit->date().toString("MM/dd/yyyy");
     // Append line to file
-    AppendLineToFile(&curLine); // TODO: Check return here, give error if failed!
+    if (!AppendLineToFile(&curLine))
+    {
+        QMessageBox msgBox;
+        QFont msgBoxFont;
+        msgBoxFont.setPointSize(14);
+        msgBoxFont.setBold(true);
+        msgBox.setWindowTitle("Error!");
+        msgBox.setFont(msgBoxFont);
+        msgBox.setText("Unable to write file: Please get nearest core member!");
+        msgBox.exec();
+        return;
+    }
     // Clear form
     ClearForm();
     // Display "You're done!" box.
@@ -109,6 +98,7 @@ RegistrationForm::on_submitRegPushButton_clicked()
     msgBox.setFont(msgBoxFont);
     msgBox.setText("You have successfully registered!");
     msgBox.exec();
+    return;
 }
 
 bool
@@ -148,4 +138,91 @@ RegistrationForm::ClearForm()
     ui.homePhoneLineEdit->setText("");
     ui.teenCellLineEdit->setText("");
     ui.birthdayDateEdit->setDate(ui.birthdayDateEdit->minimumDate());   
+}
+
+bool
+RegistrationForm::ValidateForm()
+{
+    bool passedValidation = true;
+    // Note: Teen Cell is the only non-required field in the form
+    if (ui.firstNameLineEdit->text() == "")
+    {
+        ui.firstNameLabel->setText("<font color=red>First Name:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.firstNameLabel->setText("<font color=black>First Name:</font>");
+    }
+
+    if (ui.lastNameLineEdit->text() == "")
+    {
+        ui.lastNameLabel->setText("<font color=red>Last Name:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.lastNameLabel->setText("<font color=black>Last Name:</font>");
+    }
+
+    if (ui.gradeComboBox->currentText() == "Choose Below:")
+    {
+        ui.gradeLabel->setText("<font color=red>Grade:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.gradeLabel->setText("<font color=black>Grade:</font>");
+    }
+
+    if (ui.schoolLineEdit->text() == "")
+    {
+        ui.schoolLabel->setText("<font color=red>School:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.schoolLabel->setText("<font color=black>School:</font>");
+    }
+
+    if (ui.teenEmailLineEdit->text() == "")
+    {
+        ui.teenEmailLabel->setText("<font color=red>Teen E-mail:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.teenEmailLabel->setText("<font color=black>Teen E-mail:</font>");
+    }
+
+    if (ui.parentEmailLineEdit->text() == "")
+    {
+        ui.parentEmailLabel->setText("<font color=red>Parent E-mail:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.parentEmailLabel->setText("<font color=black>Parent E-mail:</font>");
+    }
+
+    if (ui.homePhoneLineEdit->text() == "")
+    {
+        ui.homePhoneLabel->setText("<font color=red>Home Phone:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.homePhoneLabel->setText("<font color=black>Home Phone:</font>");
+    }
+
+    if (ui.birthdayDateEdit->date() == ui.birthdayDateEdit->minimumDate())
+    {
+        ui.birthdayLabel->setText("<font color=red>Birthday:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.birthdayLabel->setText("<font color=black>Birthday:</font>");
+    }
+    return passedValidation;
 }

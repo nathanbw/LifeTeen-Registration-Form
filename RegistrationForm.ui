@@ -175,7 +175,7 @@
       </widget>
      </item>
      <item row="5" column="0">
-      <widget class="QLabel" name="parentEMailLabel">
+      <widget class="QLabel" name="parentEmailLabel">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
@@ -184,7 +184,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Parent E-Mail:</string>
+        <string>Parent E-mail:</string>
        </property>
       </widget>
      </item>

@@ -18,6 +18,7 @@ private slots:
 private:
     bool AppendLineToFile(QString* line);
     void ClearForm();
+    bool ValidateForm();
 
     Ui::RegistrationForm ui;
     QFile *mpFile;
