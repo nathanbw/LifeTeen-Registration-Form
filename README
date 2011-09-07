@@ -7,3 +7,5 @@ make
 To use (Linux):
 ./register newFile.csv
     The only parameter is a filename. This file will be created or used to store submitted information in CSV format.
+./register
+    If there is no parameter, the file "Data.csv" will be created and used instead.

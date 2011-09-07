@@ -207,22 +207,22 @@ RegistrationForm::ValidateForm()
 
     if (ui.homePhoneLineEdit->text() == "")
     {
-        ui.homePhoneLabel->setText("<font color=red>Home Phone:</font>");
+        ui.homePhoneLabel->setText("<font color=red>Home Phone #:</font>");
         passedValidation = false;
     }
     else
     {
-        ui.homePhoneLabel->setText("<font color=black>Home Phone:</font>");
+        ui.homePhoneLabel->setText("<font color=black>Home Phone #:</font>");
     }
 
     if (ui.birthdayDateEdit->date() == ui.birthdayDateEdit->minimumDate())
     {
-        ui.birthdayLabel->setText("<font color=red>Birthday:</font>");
+        ui.birthdayLabel->setText("<font color=red>Birthday (MM/DD/YYYY):</font>");
         passedValidation = false;
     }
     else
     {
-        ui.birthdayLabel->setText("<font color=black>Birthday:</font>");
+        ui.birthdayLabel->setText("<font color=black>Birthday (MM/DD/YYYY):</font>");
     }
     return passedValidation;
 }

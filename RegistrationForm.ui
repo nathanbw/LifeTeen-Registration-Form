@@ -253,7 +253,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Birthday (MM/DD):</string>
+        <string>Birthday (MM/DD/YYYY):</string>
        </property>
       </widget>
      </item>
