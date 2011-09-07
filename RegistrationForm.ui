@@ -275,9 +275,9 @@
          <hour>0</hour>
          <minute>0</minute>
          <second>0</second>
-         <year>3000</year>
-         <month>12</month>
-         <day>31</day>
+         <year>1989</year>
+         <month>01</month>
+         <day>01</day>
         </datetime>
        </property>
        <property name="maximumDate">
@@ -290,8 +290,8 @@
        <property name="minimumDate">
         <date>
          <year>1989</year>
-         <month>12</month>
-         <day>31</day>
+         <month>01</month>
+         <day>01</day>
         </date>
        </property>
        <property name="displayFormat">
