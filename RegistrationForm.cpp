@@ -13,12 +13,16 @@ RegistrationForm::RegistrationForm(QWidget *parent, QString fileName)
     ui.gradeComboBox->addItem("11th - Junior");
     ui.gradeComboBox->addItem("12th - Senior");
 
+    ui.doyouhaveFacebookComboBox->addItem("Choose Below:");
+    ui.doyouhaveFacebookComboBox->addItem("Yes");
+    ui.doyouhaveFacebookComboBox->addItem("No");
+
     mpFile = new QFile(fileName);
 
     // Set up the file:
     if (!mpFile->exists())
     {
-        qDebug() << "File doesn't exist, creating: " 
+        qDebug() << "File doesn't exist, creating: "
                  << fileName;
         if (!mpFile->open(QIODevice::WriteOnly | QIODevice::Text))
         {
@@ -36,7 +40,8 @@ RegistrationForm::RegistrationForm(QWidget *parent, QString fileName)
                 << "," << "\"Parent E-mail\""
                 << "," << "\"Home Phone\""
                 << "," << "\"Teen Cell\""
-                << "," << "\"Birthday\"" << endl;
+                << "," << "\"Birthday\""
+                << "," << "\"Facebook\"" << endl;
         }
         mpFile->close();
     }
@@ -73,7 +78,8 @@ RegistrationForm::on_submitRegPushButton_clicked()
         + "," + ui.parentEmailLineEdit->text()
         + "," + ui.homePhoneLineEdit->text()
         + "," + ui.teenCellLineEdit->text()
-        + "," + ui.birthdayDateEdit->date().toString("MM/dd/yyyy");
+        + "," + ui.birthdayDateEdit->date().toString("MM/dd/yyyy")
+        + "," + ui.doyouhaveFacebookComboBox->currentText();
     // Append line to file
     if (!AppendLineToFile(&curLine))
     {
@@ -137,14 +143,15 @@ RegistrationForm::ClearForm()
     ui.parentEmailLineEdit->setText("");
     ui.homePhoneLineEdit->setText("");
     ui.teenCellLineEdit->setText("");
-    ui.birthdayDateEdit->setDate(ui.birthdayDateEdit->minimumDate());   
+    ui.birthdayDateEdit->setDate(ui.birthdayDateEdit->minimumDate());
+    ui.doyouhaveFacebookComboBox->setCurrentIndex(0);
 }
 
 bool
 RegistrationForm::ValidateForm()
 {
     bool passedValidation = true;
-    // Note: Teen Cell is the only non-required field in the form
+    // Note: Teen Cell and Facebook are not required fields
     if (ui.firstNameLineEdit->text() == "")
     {
         ui.firstNameLabel->setText("<font color=red>First Name:</font>");

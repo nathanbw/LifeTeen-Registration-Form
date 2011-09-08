@@ -16,6 +16,12 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="font">
+   <font>
+    <weight>75</weight>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>LifeTeen Registration</string>
   </property>
@@ -276,8 +282,8 @@
          <minute>0</minute>
          <second>0</second>
          <year>1989</year>
-         <month>01</month>
-         <day>01</day>
+         <month>1</month>
+         <day>1</day>
         </datetime>
        </property>
        <property name="maximumDate">
@@ -290,8 +296,8 @@
        <property name="minimumDate">
         <date>
          <year>1989</year>
-         <month>01</month>
-         <day>01</day>
+         <month>1</month>
+         <day>1</day>
         </date>
        </property>
        <property name="displayFormat">
@@ -299,6 +305,27 @@
        </property>
        <property name="calendarPopup">
         <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QComboBox" name="doyouhaveFacebookComboBox">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="doyouhaveFacebookLabel">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Do you have Facebook?</string>
        </property>
       </widget>
      </item>
