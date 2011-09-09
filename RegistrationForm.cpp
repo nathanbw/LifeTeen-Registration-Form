@@ -78,7 +78,7 @@ RegistrationForm::on_submitRegPushButton_clicked()
         + "," + ui.parentEmailLineEdit->text()
         + "," + ui.homePhoneLineEdit->text()
         + "," + ui.teenCellLineEdit->text()
-        + "," + ui.birthdayDateEdit->date().toString("MM/dd/yyyy")
+        + "," + ui.birthdayLineEdit->text()
         + "," + ui.doyouhaveFacebookComboBox->currentText();
     // Append line to file
     if (!AppendLineToFile(&curLine))
@@ -143,7 +143,7 @@ RegistrationForm::ClearForm()
     ui.parentEmailLineEdit->setText("");
     ui.homePhoneLineEdit->setText("");
     ui.teenCellLineEdit->setText("");
-    ui.birthdayDateEdit->setDate(ui.birthdayDateEdit->minimumDate());
+    ui.birthdayLineEdit->setText("");
     ui.doyouhaveFacebookComboBox->setCurrentIndex(0);
 }
 
@@ -222,7 +222,17 @@ RegistrationForm::ValidateForm()
         ui.homePhoneLabel->setText("<font color=black>Home Phone #:</font>");
     }
 
-    if (ui.birthdayDateEdit->date() == ui.birthdayDateEdit->minimumDate())
+    if (ui.teenCellLineEdit->text() == "")
+    {
+        ui.teenCellLabel->setText("<font color=red>Teen Cell #:</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.teenCellLabel->setText("<font color=black>Teen Cell #:</font>");
+    }
+
+    if (ui.birthdayLineEdit->text() == "")
     {
         ui.birthdayLabel->setText("<font color=red>Birthday (MM/DD/YYYY):</font>");
         passedValidation = false;
@@ -231,5 +241,16 @@ RegistrationForm::ValidateForm()
     {
         ui.birthdayLabel->setText("<font color=black>Birthday (MM/DD/YYYY):</font>");
     }
+
+    if (ui.doyouhaveFacebookComboBox->currentText() == "Choose Below:")
+    {
+        ui.doyouhaveFacebookLabel->setText("<font color=red>Do you have Facebook?</font>");
+        passedValidation = false;
+    }
+    else
+    {
+        ui.doyouhaveFacebookLabel->setText("<font color=black>Do you have Facebook?</font>");
+    }
+
     return passedValidation;
 }

@@ -35,7 +35,7 @@
    <property name="spacing">
     <number>6</number>
    </property>
-   <item row="0" column="2">
+   <item row="1" column="2">
     <spacer name="horizontalSpacer">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -48,7 +48,7 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -61,7 +61,7 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
       <widget class="QLabel" name="firstNameLabel">
@@ -107,6 +107,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -153,6 +155,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -176,6 +180,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -199,6 +205,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -222,6 +230,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -245,6 +255,8 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
         </font>
        </property>
       </widget>
@@ -260,51 +272,6 @@
        </property>
        <property name="text">
         <string>Birthday (MM/DD/YYYY):</string>
-       </property>
-      </widget>
-     </item>
-     <item row="8" column="1">
-      <widget class="QDateEdit" name="birthdayDateEdit">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="dateTime">
-        <datetime>
-         <hour>0</hour>
-         <minute>0</minute>
-         <second>0</second>
-         <year>1989</year>
-         <month>1</month>
-         <day>1</day>
-        </datetime>
-       </property>
-       <property name="maximumDate">
-        <date>
-         <year>3000</year>
-         <month>12</month>
-         <day>31</day>
-        </date>
-       </property>
-       <property name="minimumDate">
-        <date>
-         <year>1989</year>
-         <month>1</month>
-         <day>1</day>
-        </date>
-       </property>
-       <property name="displayFormat">
-        <string>MM/dd/yyyy</string>
-       </property>
-       <property name="calendarPopup">
-        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -329,9 +296,20 @@
        </property>
       </widget>
      </item>
+     <item row="8" column="1">
+      <widget class="QLineEdit" name="birthdayLineEdit">
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -344,7 +322,7 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="2">
+   <item row="3" column="2">
     <widget class="QPushButton" name="submitRegPushButton">
      <property name="font">
       <font>
@@ -357,6 +335,19 @@
       <string>Register!</string>
      </property>
     </widget>
+   </item>
+   <item row="0" column="1">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>
